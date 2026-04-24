@@ -13,6 +13,6 @@ if ! command -v "$MISE_BIN" >/dev/null 2>&1 && [ -x "$HOME/.local/bin/mise" ]; t
 fi
 
 if command -v "$MISE_BIN" >/dev/null 2>&1; then
-  "$MISE_BIN" trust "$HOME/.config/mise" >/dev/null 2>&1 || true
-  "$MISE_BIN" install --yes >/dev/null 2>&1 || true
+  "$MISE_BIN" trust "$HOME/.config/mise"
+  "$MISE_BIN" install --yes
 fi

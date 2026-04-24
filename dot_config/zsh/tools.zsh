@@ -2,7 +2,13 @@ if [[ -x /home/linuxbrew/.linuxbrew/bin/brew ]]; then
   eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"
 fi
 
-command -v mise >/dev/null 2>&1 && eval "$(mise activate zsh)"
+if command -v mise >/dev/null 2>&1; then
+  eval "$(mise activate zsh)"
+fi
+
+if [[ -d "$HOME/.local/share/mise/shims" ]]; then
+  path=("$HOME/.local/share/mise/shims" $path)
+fi
 
 if command -v fzf >/dev/null 2>&1; then
   source <(fzf --zsh)
