@@ -2,13 +2,18 @@ FROM mcr.microsoft.com/devcontainers/base:debian-13
 
 RUN apt-get update && apt-get install -y \
     bash \
+    bat \
+    btop \
     ca-certificates \
     curl \
     fd-find \
     fzf \
     git \
+    lsd \
     ripgrep \
+    starship \
     unzip \
+    zoxide \
     zsh \
     && rm -rf /var/lib/apt/lists/*
 

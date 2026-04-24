@@ -26,6 +26,9 @@ cat > "$target/.devcontainer/devcontainer.json" <<EOF
     "dockerfile": "Dockerfile"
   },
   "remoteUser": "vscode",
+  "remoteEnv": {
+    "GITHUB_TOKEN": "\${localEnv:GITHUB_TOKEN}"
+  },
   "postCreateCommand": "mise trust && mise install || true",
   "customizations": {
     "vscode": {
