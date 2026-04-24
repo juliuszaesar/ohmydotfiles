@@ -6,5 +6,11 @@ name = {{ or (env "GIT_AUTHOR_NAME") (env "USER") "Dev Container" | quote }}
 autoCommit = false
 autoPush = false
 
+[diff]
+exclude = ["scripts"]
+
+[status]
+exclude = ["scripts"]
+
 [edit]
 command = "nvim"

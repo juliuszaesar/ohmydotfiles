@@ -16,3 +16,6 @@ RUN curl -sSLf https://mise.run | MISE_INSTALL_PATH=/usr/local/bin/mise sh && \
     echo 'eval "$(mise activate zsh)"' >> /home/vscode/.zshrc && \
     echo 'eval "$(mise activate bash)"' >> /home/vscode/.bashrc
 
+RUN chsh -s /usr/bin/zsh vscode
+
+ENV SHELL=/usr/bin/zsh
