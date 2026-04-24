@@ -13,5 +13,10 @@ if ! command -v "$CHEZMOI" >/dev/null 2>&1 && [ -x "$HOME/.local/bin/chezmoi" ];
   CHEZMOI="$HOME/.local/bin/chezmoi"
 fi
 
-"$CHEZMOI" --source "$repo_dir" init
-"$CHEZMOI" --source "$repo_dir" apply
+if [ -n "${DEVPOD:-}" ] || [ -n "${REMOTE_CONTAINERS:-}" ] || [ -n "${CODESPACES:-}" ] || [ ! -t 0 ]; then
+  "$CHEZMOI" --source "$repo_dir" --force --no-tty init
+  "$CHEZMOI" --source "$repo_dir" --force --no-tty apply
+else
+  "$CHEZMOI" --source "$repo_dir" init
+  "$CHEZMOI" --source "$repo_dir" apply
+fi
