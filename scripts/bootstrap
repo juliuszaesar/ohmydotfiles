@@ -14,7 +14,7 @@ if ! command -v "$CHEZMOI" >/dev/null 2>&1 && [ -x "$HOME/.local/bin/chezmoi" ];
 fi
 
 if [ -f "$repo_dir/.chezmoi.toml.tmpl" ]; then
-  "$CHEZMOI" init --source "$repo_dir"
+  "$CHEZMOI" --source "$repo_dir" init
 fi
 
-"$CHEZMOI" apply
+"$CHEZMOI" --source "$repo_dir" apply

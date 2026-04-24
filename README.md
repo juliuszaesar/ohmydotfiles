@@ -20,7 +20,6 @@ dot_zprofile.tmpl
 dot_zshrc.tmpl
 dot_bashrc.tmpl
 dot_config/
-private_dot_config/
 scripts/
 setup
 ```

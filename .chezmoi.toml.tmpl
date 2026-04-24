@@ -1,9 +1,6 @@
-{{- $email := promptStringOnce . "email" "Email address for git config" -}}
-{{- $name := promptStringOnce . "name" "Full name for git config" -}}
-
 [data]
-email = {{ $email | quote }}
-name = {{ $name | quote }}
+email = {{ or (env "GIT_AUTHOR_EMAIL") (env "EMAIL") "devcontainer@example.local" | quote }}
+name = {{ or (env "GIT_AUTHOR_NAME") (env "USER") "Dev Container" | quote }}
 
 [git]
 autoCommit = false
@@ -11,4 +8,3 @@ autoPush = false
 
 [edit]
 command = "nvim"
-

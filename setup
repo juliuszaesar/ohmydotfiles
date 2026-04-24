@@ -13,6 +13,5 @@ if ! command -v "$CHEZMOI" >/dev/null 2>&1 && [ -x "$HOME/.local/bin/chezmoi" ];
   CHEZMOI="$HOME/.local/bin/chezmoi"
 fi
 
-"$CHEZMOI" init --source "$repo_dir"
-"$CHEZMOI" apply
-
+"$CHEZMOI" --source "$repo_dir" init
+"$CHEZMOI" --source "$repo_dir" apply
