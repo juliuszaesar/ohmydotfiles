@@ -1,0 +1,12 @@
+#!/usr/bin/env sh
+set -eu
+
+if ! command -v mise >/dev/null 2>&1; then
+  curl -fsSL https://mise.run | sh
+fi
+
+if command -v mise >/dev/null 2>&1; then
+  mise trust "$HOME/.config/mise/config.toml" >/dev/null 2>&1 || true
+  mise install --yes >/dev/null 2>&1 || true
+fi
+

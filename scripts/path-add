@@ -1,0 +1,10 @@
+#!/usr/bin/env sh
+set -eu
+
+dir="${1:?usage: path-add DIR}"
+
+case ":$PATH:" in
+  *":$dir:"*) printf '%s\n' "$PATH" ;;
+  *) printf '%s\n' "$dir:$PATH" ;;
+esac
+

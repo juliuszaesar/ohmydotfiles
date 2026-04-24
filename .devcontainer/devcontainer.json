@@ -1,0 +1,14 @@
+{
+  "name": "ohmydotfiles",
+  "build": {
+    "dockerfile": "Dockerfile"
+  },
+  "remoteUser": "vscode",
+  "postCreateCommand": "mise trust && mise install || true",
+  "customizations": {
+    "vscode": {
+      "extensions": []
+    }
+  }
+}
+

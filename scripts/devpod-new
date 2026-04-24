@@ -1,0 +1,22 @@
+#!/usr/bin/env sh
+set -eu
+
+target="${1:-.}"
+mkdir -p "$target/.devcontainer"
+
+repo_dir="$(CDPATH= cd -- "$(dirname -- "$0")/.." && pwd)"
+template_dir="$repo_dir/.devcontainer"
+
+if [ ! -d "$template_dir" ] && command -v chezmoi >/dev/null 2>&1; then
+  template_dir="$(chezmoi source-path)/.devcontainer"
+fi
+
+if [ ! -d "$template_dir" ]; then
+  printf '%s\n' "Cannot find .devcontainer template directory." >&2
+  exit 1
+fi
+
+cp "$template_dir/devcontainer.json" "$target/.devcontainer/devcontainer.json"
+cp "$template_dir/Dockerfile" "$target/.devcontainer/Dockerfile"
+
+printf '%s\n' "Created devcontainer template in $target/.devcontainer"

@@ -1,0 +1,14 @@
+{{- $email := promptStringOnce . "email" "Email address for git config" -}}
+{{- $name := promptStringOnce . "name" "Full name for git config" -}}
+
+[data]
+email = {{ $email | quote }}
+name = {{ $name | quote }}
+
+[git]
+autoCommit = false
+autoPush = false
+
+[edit]
+command = "nvim"
+

@@ -1,0 +1,9 @@
+[tools]
+node = "lts"
+python = "latest"
+go = "latest"
+usage = "latest"
+
+[settings]
+experimental = true
+

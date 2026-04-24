@@ -1,0 +1,18 @@
+#!/usr/bin/env sh
+set -eu
+
+repo_dir="$(CDPATH= cd -- "$(dirname -- "$0")" && pwd)"
+
+if ! command -v chezmoi >/dev/null 2>&1; then
+  sh -c "$(curl -fsLS get.chezmoi.io)" -- -b "$HOME/.local/bin"
+fi
+
+CHEZMOI="${CHEZMOI:-chezmoi}"
+
+if ! command -v "$CHEZMOI" >/dev/null 2>&1 && [ -x "$HOME/.local/bin/chezmoi" ]; then
+  CHEZMOI="$HOME/.local/bin/chezmoi"
+fi
+
+"$CHEZMOI" init --source "$repo_dir"
+"$CHEZMOI" apply
+

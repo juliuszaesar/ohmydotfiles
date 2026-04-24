@@ -1,0 +1,13 @@
+.DS_Store
+Thumbs.db
+*.swp
+*.swo
+*~
+
+.cache/
+.tmp/
+tmp/
+
+.codex
+.chezmoi.toml
+chezmoi.toml
