@@ -19,7 +19,6 @@ opencode = "1.2.27"
 difftastic = "0.67.0"
 "github:twpayne/chezmoi" = "2.70.0"
 "github:nushell/nushell" = { version = "0.111.0", exe = "nu" }
-usage = "latest"
 
 [settings]
 experimental = true

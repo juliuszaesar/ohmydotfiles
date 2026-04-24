@@ -6,6 +6,7 @@ mkdir -p "$target/.devcontainer"
 
 repo_dir="$(CDPATH= cd -- "$(dirname -- "$0")/.." && pwd)"
 template_dir="$repo_dir/.devcontainer"
+project_name="$(basename "$(CDPATH= cd -- "$target" && pwd)")"
 
 if [ ! -d "$template_dir" ] && command -v chezmoi >/dev/null 2>&1; then
   template_dir="$(chezmoi source-path)/.devcontainer"
@@ -16,7 +17,22 @@ if [ ! -d "$template_dir" ]; then
   exit 1
 fi
 
-cp "$template_dir/devcontainer.json" "$target/.devcontainer/devcontainer.json"
 cp "$template_dir/Dockerfile" "$target/.devcontainer/Dockerfile"
+
+cat > "$target/.devcontainer/devcontainer.json" <<EOF
+{
+  "name": "$project_name",
+  "build": {
+    "dockerfile": "Dockerfile"
+  },
+  "remoteUser": "vscode",
+  "postCreateCommand": "mise trust && mise install || true",
+  "customizations": {
+    "vscode": {
+      "extensions": []
+    }
+  }
+}
+EOF
 
 printf '%s\n' "Created devcontainer template in $target/.devcontainer"
