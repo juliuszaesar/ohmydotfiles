@@ -1,9 +1,26 @@
+min_version = "2025.11.7"
+
 [tools]
+bat = "0.26.1"
+btop = "1.4.6"
+doggo = "1.1.4"
+fd = "10.3.0"
+fzf = "0.67.0"
+github-cli = "2.86.0"
+jj = "0.39.0"
+lsd = "1.2.0"
 node = "lts"
 python = "latest"
 go = "latest"
+starship = "1.24.2"
+zellij = "0.44.0"
+zoxide = "0.9.8"
+opencode = "1.2.27"
+difftastic = "0.67.0"
+"github:twpayne/chezmoi" = "2.70.0"
+"github:nushell/nushell" = { version = "0.111.0", exe = "nu" }
 usage = "latest"
 
 [settings]
 experimental = true
-
+pin = true

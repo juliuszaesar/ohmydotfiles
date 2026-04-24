@@ -1,0 +1,18 @@
+#!/usr/bin/env sh
+# mise config hash: {{ include "dot_config/mise/config.toml" | sha256sum }}
+set -eu
+
+if ! command -v mise >/dev/null 2>&1; then
+  curl -fsSL https://mise.run | sh
+fi
+
+MISE_BIN="${MISE_BIN:-mise}"
+
+if ! command -v "$MISE_BIN" >/dev/null 2>&1 && [ -x "$HOME/.local/bin/mise" ]; then
+  MISE_BIN="$HOME/.local/bin/mise"
+fi
+
+if command -v "$MISE_BIN" >/dev/null 2>&1; then
+  "$MISE_BIN" trust "$HOME/.config/mise" >/dev/null 2>&1 || true
+  "$MISE_BIN" install --yes >/dev/null 2>&1 || true
+fi
