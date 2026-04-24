@@ -4,11 +4,10 @@
     "dockerfile": "Dockerfile"
   },
   "remoteUser": "vscode",
-  "postCreateCommand": "mise trust && mise install || true",
+  "postCreateCommand": "./setup",
   "customizations": {
     "vscode": {
       "extensions": []
     }
   }
 }
-
