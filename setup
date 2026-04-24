@@ -14,9 +14,9 @@ if ! command -v "$CHEZMOI" >/dev/null 2>&1 && [ -x "$HOME/.local/bin/chezmoi" ];
 fi
 
 if [ -n "${DEVPOD:-}" ] || [ -n "${REMOTE_CONTAINERS:-}" ] || [ -n "${CODESPACES:-}" ] || [ ! -t 0 ]; then
-  "$CHEZMOI" --source "$repo_dir" --force --no-tty init
+  CHEZMOI_SOURCE_DIR="$repo_dir" "$CHEZMOI" --source "$repo_dir" --force --no-tty init
   "$CHEZMOI" --source "$repo_dir" --force --no-tty apply
 else
-  "$CHEZMOI" --source "$repo_dir" init
+  CHEZMOI_SOURCE_DIR="$repo_dir" "$CHEZMOI" --source "$repo_dir" init
   "$CHEZMOI" --source "$repo_dir" apply
 fi
